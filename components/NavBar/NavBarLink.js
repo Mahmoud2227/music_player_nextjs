@@ -9,16 +9,14 @@ const NavBarLink = (props) => {
 
 	const isActive = router.asPath === props.to;
 	return (
-		<li className={`${classes["navBar__link"]} ${isActive ? classes["active"] : ""}`}>
 			<Link href={props.to}>
-				<div>
-					<IconContext.Provider value={{size:'24px',className:classes['icon']}}>
+				<div className={`${classes["navBar__link"]} ${isActive ? classes["active"] : ""}`}>
+					<IconContext.Provider value={{size: "24px", className: classes["icon"]}}>
 						{props.children}
 						<p>{props.title}</p>
 					</IconContext.Provider>
 				</div>
 			</Link>
-		</li>
 	);
 };
 
