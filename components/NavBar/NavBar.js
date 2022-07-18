@@ -1,3 +1,5 @@
+import {useEffect, useContext, useState} from "react";
+
 import Image from "next/image";
 import {MdSpaceDashboard, MdFavorite} from "react-icons/md";
 import {FaGripfire, FaPlay, FaSignOutAlt} from "react-icons/fa";
@@ -6,12 +8,28 @@ import {IoLibrary} from "react-icons/io5";
 import classes from "./navBar.module.scss";
 import NavBarLink from "./NavBarLink";
 
-const NavBar = () => {
+import {MusicPlayerContext} from "../../store//context";
+
+const NavBar = (props) => {
+	const [image, setImage] = useState("https://ui-avatars.com/api/?name=John+Doe");
+	const {token} = useContext(MusicPlayerContext);
+
+	useEffect(() => {
+		fetch("https://api.spotify.com/v1/me",{
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json"
+			}
+		}).then(res => res.json()).then(data => {
+			setImage(data.images[0].url);
+		})
+	},[token]);
+
 	return (
 		<nav className={classes.navBar}>
 			<div className={classes["profile-avatar"]}>
 				<Image
-					src={"https://ui-avatars.com/api/?name=John+Doe"}
+					src={image}
 					alt='profile avatar'
 					layout='fill'
 					objectFit='fill'
