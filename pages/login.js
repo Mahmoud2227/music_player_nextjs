@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,6 +7,9 @@ import {loginEndpoint} from "../spotify/spotifty";
 import classes from "../styles/Login.module.scss";
 
 const LoginPage = () => {
+	useEffect(() => {
+		localStorage.removeItem("token");
+	},[])
 	return (
 		<div className={classes['login-page']}>
 			<div className={classes['logo']}>

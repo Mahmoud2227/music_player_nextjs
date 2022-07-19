@@ -6,8 +6,7 @@ import classes from "./NavBarLink.module.scss";
 
 const NavBarLink = (props) => {
 	const router = useRouter();
-
-	const isActive = router.asPath === props.to;
+	const isActive = router.pathname === props.to;
 	return (
 			<Link href={props.to}>
 				<div className={`${classes["navBar__link"]} ${isActive ? classes["active"] : ""}`}>

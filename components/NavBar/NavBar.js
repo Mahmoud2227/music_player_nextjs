@@ -1,4 +1,5 @@
 import {useEffect, useContext, useState} from "react";
+import { useRouter } from "next/router";
 
 import Image from "next/image";
 import {MdSpaceDashboard, MdFavorite} from "react-icons/md";
@@ -11,19 +12,25 @@ import NavBarLink from "./NavBarLink";
 import {MusicPlayerContext} from "../../store//context";
 
 const NavBar = (props) => {
+	const router = useRouter();
+
 	const [image, setImage] = useState("https://ui-avatars.com/api/?name=John+Doe");
 	const {token} = useContext(MusicPlayerContext);
 
 	useEffect(() => {
-		fetch("https://api.spotify.com/v1/me",{
-			headers: {
-				Authorization: "Bearer " + token,
-				"Content-Type": "application/json"
-			}
-		}).then(res => res.json()).then(data => {
-			setImage(data.images[0].url);
-		})
-	},[token]);
+		if (token) {
+			fetch("https://api.spotify.com/v1/me",{
+				headers: {
+					Authorization: "Bearer " + token,
+					"Content-Type": "application/json"
+				}
+			}).then(res => res.json()).then(data => {
+					setImage(data.images[0].url);
+			}).catch(err => {
+				router.push("/login");
+			})
+		}
+	},[token, router]);
 
 	return (
 		<nav className={classes.navBar}>

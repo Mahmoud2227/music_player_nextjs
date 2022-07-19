@@ -3,7 +3,17 @@ const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
 	images: {
-		domains: ["ui-avatars.com", "storage.googleapis.com", "scontent-cdg2-1.xx.fbcdn.net"],
+		domains: ["ui-avatars.com", "storage.googleapis.com"],
+	},
+	experimental: {
+		images: {
+			remotePatterns: [
+				{
+					protocol: "https",
+					hostname: "**.xx.fbcdn.net",
+				},
+			],
+		},
 	},
 };
 
