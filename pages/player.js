@@ -28,7 +28,7 @@ const PLayerPage = () => {
 			});
 			const data = await res.json();
 			setTracks(data.items);
-			console.log(data.items[0].track.album);
+			console.log(data.items[0].track);
 		};
 
 		if (id) {
@@ -40,7 +40,7 @@ const PLayerPage = () => {
 		<main className={classes["body"]}>
 			<div className={classes["body-left"]}></div>
 			<div className={classes["body-right"]}>
-					{tracks[currentIndex] && <TrackCard album={tracks[currentIndex].track.album} />}
+					{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
 				<Queue />
 			</div>
 		</main>
