@@ -7,10 +7,11 @@ import {MusicPlayerContext} from "../store/context";
 
 import TrackCard from "../components/TrackCard/TrackCard";
 import Queue from "../components/Queue/Queue";
+import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
 
 const PLayerPage = () => {
 	const [tracks, setTracks] = useState([]);
-	const [currentTrack, setCurrentTrack] = useState({});
+	const [currentTrack, setCurrentTrack] = useState(null);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const router = useRouter();
@@ -28,7 +29,8 @@ const PLayerPage = () => {
 			});
 			const data = await res.json();
 			setTracks(data.items);
-			console.log(data.items[0].track);
+			setCurrentTrack(data.items[0].track);
+			console.log(data.items[0].track.album.images[1]);
 		};
 
 		if (id) {
@@ -36,9 +38,13 @@ const PLayerPage = () => {
 		}
 	}, [id, token]);
 
+
+
 	return (
 		<main className={classes["body"]}>
-			<div className={classes["body-left"]}></div>
+			<div className={classes["body-left"]}>
+				{currentTrack && <AudioPlayer currentTrack={currentTrack}/>}
+			</div>
 			<div className={classes["body-right"]}>
 					{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
 				{tracks && <Queue tracks={tracks} setCurrentIndex={setCurrentIndex} />}

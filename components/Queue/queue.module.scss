@@ -23,6 +23,7 @@
 	}
 
 	.list {
+		max-width: 305px;
 		overflow-y: auto;
 
 		&::-webkit-scrollbar {

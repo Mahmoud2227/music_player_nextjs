@@ -1,0 +1,14 @@
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  .body-left {
+    width:35%
+  }
+
+  .body-right {
+    width:65%
+  }
+}
