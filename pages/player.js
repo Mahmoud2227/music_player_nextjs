@@ -41,7 +41,7 @@ const PLayerPage = () => {
 			<div className={classes["body-left"]}></div>
 			<div className={classes["body-right"]}>
 					{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
-				<Queue />
+				{tracks && <Queue tracks={tracks} setCurrentIndex={setCurrentIndex} />}
 			</div>
 		</main>
 	);

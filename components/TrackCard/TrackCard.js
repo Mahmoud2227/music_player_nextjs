@@ -18,8 +18,7 @@ const TrackCard = ({track:{album,name}}) => {
 			</div>
 			<div className={classes["album-info"]}>
 				<div className={classes["album-name"]}>
-						<p>{name + " - " + album.name}</p>
-						{/* <p>{album.name}</p> */}
+						<p>{name}</p>
 				</div>
 				<div className={classes["album-desc"]}>
 					<p>{`${album.name} is an ${album.album_type} by ${artists?.join(", ")} with ${

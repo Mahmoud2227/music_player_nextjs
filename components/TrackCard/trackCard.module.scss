@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 62%;
+	min-height: 65%;
 	padding: 1rem;
 	background-color: #27354d;
 	border-radius: 30px;
@@ -44,6 +44,12 @@
 			display: inline-block;
 			animation: album-name 12s linear infinite;
 			padding-left: 100%;
+			
+			p {
+				max-width: 250px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 
 		@keyframes album-name {
