@@ -12,6 +12,10 @@ const nextConfig = {
 					protocol: "https",
 					hostname: "**.xx.fbcdn.net",
 				},
+				{
+					protocol: "https",
+					hostname: "**.scdn.co",
+				},
 			],
 		},
 	},
