@@ -39,7 +39,9 @@ const PLayerPage = () => {
 	}, [id, token]);
 
 	useEffect(()=> {
-		setCurrentTrack(tracks[currentIndex].track);
+		if (tracks[currentIndex]) {
+			setCurrentTrack(tracks[currentIndex].track);
+		}
 	},[currentIndex, tracks]);
 
 
@@ -47,7 +49,7 @@ const PLayerPage = () => {
 	return (
 		<main className={classes["body"]}>
 			<div className={classes["body-left"]}>
-				{currentTrack && <AudioPlayer currentTrack={currentTrack}/>}
+				{currentTrack && <AudioPlayer currentTrack={currentTrack} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} total={tracks} />}
 			</div>
 			<div className={classes["body-right"]}>
 					{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
