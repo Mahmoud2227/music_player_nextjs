@@ -51,7 +51,7 @@ const ProgressCircle = ({
 					clipPath='url(#myCircle)'
 				/>
 				<image
-					className={isPlaying ? "active" : ""}
+					className={isPlaying ? classes["active"] : ""}
 					x={100}
 					y={100}
 					width={2 * (size / 2 - 100)}

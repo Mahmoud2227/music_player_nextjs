@@ -30,7 +30,7 @@ const PLayerPage = () => {
 			const data = await res.json();
 			setTracks(data.items);
 			setCurrentTrack(data.items[0].track);
-			console.log(data.items[0].track.album.images[1]);
+			// console.log(data.items[0].track.album.images[1]);
 		};
 
 		if (id) {
