@@ -1,14 +1,60 @@
 .body {
-  display: flex;
-  // align-items: center;
-  justify-content: center;
-  padding: 1rem;
+	display: flex;
+	// align-items: center;
+	justify-content: center;
+	padding: 1rem;
 
-  .body-left {
-    width:35%
-  }
+	.body-left {
+		width: 35%;
+	}
 
-  .body-right {
-    width:65%
-  }
+	.body-right {
+		width: 65%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+		.track-title {
+			text-align: center;
+			font-size: 58px;
+			font-weight: bold;
+			margin: 0px;
+			color: #c4d0e3;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+
+		.track-artists {
+			color: #9aa9c2;
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		.body-right-bottom {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			width: 100%;
+
+			.track-duration {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 50%;
+				margin-bottom: 1.5rem;
+
+				p {
+					font-size: 20px;
+					font-weight: 700;
+					margin: 0;
+					color: #c4d0e3;
+				}
+			}
+		}
+	}
 }

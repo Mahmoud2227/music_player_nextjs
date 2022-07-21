@@ -38,6 +38,10 @@ const PLayerPage = () => {
 		}
 	}, [id, token]);
 
+	useEffect(()=> {
+		setCurrentTrack(tracks[currentIndex].track);
+	},[currentIndex, tracks]);
+
 
 
 	return (
