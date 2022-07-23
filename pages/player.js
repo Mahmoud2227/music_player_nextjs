@@ -8,6 +8,7 @@ import {MusicPlayerContext} from "../store/context";
 import TrackCard from "../components/TrackCard/TrackCard";
 import Queue from "../components/Queue/Queue";
 import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
+import Widgets from "../components/Widgets/Widgets";
 
 const PLayerPage = () => {
 	const [tracks, setTracks] = useState([]);
@@ -38,21 +39,27 @@ const PLayerPage = () => {
 		}
 	}, [id, token]);
 
-	useEffect(()=> {
+	useEffect(() => {
 		if (tracks[currentIndex]) {
 			setCurrentTrack(tracks[currentIndex].track);
 		}
-	},[currentIndex, tracks]);
-
-
+	}, [currentIndex, tracks]);
 
 	return (
 		<main className={classes["body"]}>
 			<div className={classes["body-left"]}>
-				{currentTrack && <AudioPlayer currentTrack={currentTrack} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} total={tracks} />}
+				{currentTrack && (
+					<AudioPlayer
+						currentTrack={currentTrack}
+						currentIndex={currentIndex}
+						setCurrentIndex={setCurrentIndex}
+						total={tracks}
+					/>
+				)}
+				{currentTrack && <Widgets artistID={currentTrack.album.artists[0].id} />}
 			</div>
 			<div className={classes["body-right"]}>
-					{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
+				{tracks[currentIndex] && <TrackCard track={tracks[currentIndex].track} />}
 				{tracks && <Queue tracks={tracks} setCurrentIndex={setCurrentIndex} />}
 			</div>
 		</main>
